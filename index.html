@@ -37,7 +37,7 @@
     .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     @media(max-width:520px){.row{grid-template-columns:1fr}}
 
-    .tag{display:inline-flex;gap:8px;align-items:center;border:1px solid #E5E7EB;border-radius:999px;background:#fff;padding:8px 12px;font-size:12px;color:var(--muted)}
+    .tag{display:inline-flex;gap:8px;align-items:center;border:1px solid #E5E7EB;border-radius:999px;background:#fff;padding:4px 8px;font-size:12px;color:var(--muted)}
 
     .kpis{display:grid;grid-template-columns:1fr;gap:12px}
     @media(min-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}}
@@ -70,6 +70,7 @@
     </header>
 
     <div class="grid">
+      <!-- Card 1: Your Situation -->
       <div class="card" aria-label="Your Situation">
         <h2>Your Situation</h2>
         <p class="sub">Let’s start with a few numbers to get a clear picture.</p>
@@ -95,14 +96,63 @@
         </div>
       </div>
 
+      <!-- Card 2: Monthly Expenses -->
       <div class="card" aria-label="Your Monthly Expenses">
         <h2>Your Monthly Expenses</h2>
         <p class="note">Again this is just a rough estimate off the top of your head to give you an idea.</p>
         <div class="help">Group similar costs together—quick guesses are absolutely fine.</div>
 
         <div class="grouphead">Housing & Home</div>
-        <div class="field"><label>🏠 Rent / Mortgage</label><input id="expHousing" type="number" inputmode="decimal" min="0" placeholder="e.g., 1600"/></div>
-        <div class="field"><label>🔌 Utilities / Internet / Phone</label><input id="expUtilities" type="number" inputmode="decimal" min="0" placeholder="e.g., 300"/></div>
+        <div class="field"><label>🏠 Rent / Mortgage</label><input id="expHousing" type="number" placeholder="e.g., 1600"/></div>
+        <div class="field"><label>🔌 Utilities / Internet / Phone</label><input id="expUtilities" type="number" placeholder="e.g., 300"/></div>
 
         <div class="grouphead">Living Costs</div>
-        <div class="
+        <div class="field"><label>🛒 Groceries</label><input id="expGroceries" type="number" placeholder="e.g., 600"/></div>
+        <div class="field"><label>🚗 Transportation (gas, insurance, car pmt)</label><input id="expTransport" type="number" placeholder="e.g., 200"/></div>
+
+        <div class="grouphead">Health & Debt</div>
+        <div class="field"><label>🩺 Health (premiums / meds)</label><input id="expHealth" type="number" placeholder="e.g., 1000"/></div>
+        <div class="field"><label>💳 Debt minimums (loans / credit)</label><input id="expDebt" type="number" placeholder="e.g., 300"/></div>
+
+        <div class="grouphead">Kids & Other</div>
+        <div class="field"><label>👨‍👩‍👧 Childcare / Dependents (optional)</label><input id="expChildcare" type="number" placeholder="e.g., 500"/></div>
+        <div class="field"><label>📦 Subscriptions / Other</label><input id="expOther" type="number" placeholder="e.g., 150"/></div>
+      </div>
+
+      <!-- Card 3: Reality in Dollars -->
+      <div class="card" aria-label="Your Reality in Dollars">
+        <h2>Your Reality in Dollars</h2>
+        <div class="kpis">
+          <div class="kpi"><div class="label">Money you spend monthly</div><div id="monthlySpend" class="value">$0</div></div>
+          <div class="kpi"><div class="label">Money you spend weekly</div><div id="weeklySpend" class="value">$0</div></div>
+        </div>
+
+        <div class="scenarios">
+          <div class="scenario">
+            <h3>If you keep waiting</h3>
+            <p>Based on your current weekly spending and the time you expect to wait without help.</p>
+            <div class="kpi small"><div class="label">Money you'll spend while waiting for a job offer</div><div id="costWaiting" class="value">$0</div></div>
+          </div>
+          <div class="scenario">
+            <h3>If you get my assistance TODAY</h3>
+            <p class="help">See the impact of starting a focused plan today.</p>
+            <div class="field">
+              <label>Choose a date</label>
+              <select id="startDate">
+                <option>Today</option>
+                <option>≈90 days from today (focused plan timeline)</option>
+              </select>
+            </div>
+            <div class="kpi small"><div class="label">Money you would earn by getting a job and help sooner</div><div id="valueSooner" class="value">$0</div></div>
+            <div class="kpi small"><div class="label">With a focused plan, the time it would take you to earn back any investment is...</div><div id="paybackTime" class="value">—</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sticky">
+      <div>Every week you wait costs about <strong id="weeklyCost">$0</strong>.</div>
+    </div>
+  </div>
+</body>
+</html>
